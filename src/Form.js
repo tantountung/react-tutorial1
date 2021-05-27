@@ -1,12 +1,16 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 
 class Form extends Component {
-  initialState = {
+    constructor(props) {
+        super(props);
+
+  this.initialState = {
     name: '',
     job: '',
-  }
+  };
 
-  state = this.initialState
+  this.state = this.initialState;
+}
 
   handleChange = (event) => {
     const {name, value} = event.target
@@ -16,38 +20,44 @@ class Form extends Component {
     })
   }
 
+  
+  onFormSubmit = (event) => {
+    event.preventDefault();
+    this.props.handleSubmit(this.state)
+    this.setState(this.initialState)
+  }
+
   render() {
     const { name, job } = this.state;
   
     return (
-      <form>
-        <label htmlFor="name">Name</label>
+        <form onSubmit={this.onFormSubmit}>
+        <label for="name">Name</label>
         <input
           type="text"
           name="name"
           id="name"
           value={name}
           onChange={this.handleChange} />
-        <label htmlFor="job">Job</label>
+        <label for="job">Job</label>
         <input
           type="text"
           name="job"
           id="job"
           value={job}
           onChange={this.handleChange} />
+          <button type="submit">
+                    Submit
+                </button>
       </form>
     );
 
-    <Form handleSubmit={this.handleSubmit} />
+   
 
     
 
-    submitForm = () => {
-        this.props.handleSubmit(this.state)
-        this.setState(this.initialState)
-      }
 
-      <input type="button" value="Submit" onClick={this.submitForm} />
+    //   <input type="button" value="Submit" onClick={this.submitForm} />
   }
 }
 
