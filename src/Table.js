@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 
 
 const TableHeader = () => {
@@ -7,9 +7,10 @@ const TableHeader = () => {
           <tr>
             <th>Name</th>
             <th>Job</th>
+            <th>Remove</th>
           </tr>
         </thead>
-  )
+  );
   }
 
   const TableBody = (props) => {
@@ -22,24 +23,23 @@ const TableHeader = () => {
         <button onClick={() => props.removeCharacter(index)}>Delete</button>
       </td>
     </tr>
-    )     
-                    })
+    );
+                    });
                     return <tbody>{rows}</tbody>
                   }
 
-class Table extends Component {
-  render() {
+
     const Table = (props) => {
-      const {characterData, removeCharacter} = props
-    }
+      const {characterData, removeCharacter} = props;
+    
       return (
         <table>
           <TableHeader />
           <TableBody characterData={characterData} removeCharacter={removeCharacter} />
         </table>
-      )
+      );
     }
-  }
+  
 
 
-export default Table
+export default Table;
